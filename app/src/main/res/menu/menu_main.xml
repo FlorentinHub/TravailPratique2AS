@@ -3,4 +3,7 @@
     <item
         android:id="@+id/action_logout"
         android:title="Déconnexion"/>
+    <item
+        android:id="@+id/action_edit_profile"
+        android:title="Modifier le profil"/>
 </menu>

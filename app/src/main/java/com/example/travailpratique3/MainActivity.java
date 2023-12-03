@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,8 +26,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Ajout de la barre de menu personnalisée
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         mAuth = FirebaseAuth.getInstance();
-        btnLogout = findViewById(R.id.btn_logout);
+//        btnLogout = findViewById(R.id.btn_logout);
 
         // Vérifie si l'utilisateur est connecté
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -36,17 +41,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish(); // Empêche l'utilisateur de revenir à cette activité via le bouton "Retour"
         }
-
-        // Bouton pour se déconnecter
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mAuth.signOut();
-                Intent intent = new Intent(MainActivity.this, ConnexionActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 
     // Méthode pour créer la barre de navigation
@@ -57,14 +51,22 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    // Gestion des options de la barre de navigation
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_logout) {
+        int id = item.getItemId();
+        //Savoir quel action est demandee par le user
+            //Deconnexion
+        if (id == R.id.action_logout) {
             mAuth.signOut();
-            Intent intent = new Intent(MainActivity.this, ConnexionActivity.class);
-            startActivity(intent);
+            //Renvoi sur la page de connexion
+            Intent logoutIntent = new Intent(MainActivity.this, ConnexionActivity.class);
+            startActivity(logoutIntent);
             finish();
+            return true;
+            //Gestion profil
+        } else if (id == R.id.action_edit_profile) {
+            Intent editProfileIntent = new Intent(MainActivity.this, GestionProfilActivity.class);
+            startActivity(editProfileIntent);
             return true;
         }
         return super.onOptionsItemSelected(item);

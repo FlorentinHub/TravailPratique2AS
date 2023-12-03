@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:orientation="vertical">
 
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:title="Gestion du Profil"
+        android:titleTextColor="#FFFFFF" />
     <!-- Titre de l'activité -->
     <TextView
         android:id="@+id/text_view_profile_title"
@@ -77,4 +89,4 @@
             android:layout_marginTop="16dp"
             android:layout_gravity="center_horizontal"/>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
