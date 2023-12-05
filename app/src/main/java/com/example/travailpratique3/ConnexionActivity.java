@@ -42,9 +42,7 @@ public class ConnexionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Récupération des informations d'authentification
                 String email = tiet_email.getText().toString().trim();
-                Log.e("Email","Email: "+email);
                 String password = tiet_password.getText().toString().trim();
-                Log.e("Email","Email: "+password);
 
                 // Connexion d'un utilisateur existant avec Firebase
                 bdAuth.signInWithEmailAndPassword(email, password)

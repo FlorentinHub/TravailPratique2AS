@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TravailPratique3</string>
+    <string name="title_connect">Se connecter</string>
+    <string name="hint_enter_email">Entrez votre courriel</string>
+    <string name="hint_enter_password">Entrez votre mot de passe</string>
+    <string name="register_button">S\'inscrire</string>
+    <string name="login_button">Se connecter</string>
 </resources>
