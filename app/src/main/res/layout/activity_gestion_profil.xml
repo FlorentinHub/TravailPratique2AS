@@ -70,22 +70,20 @@
             android:text="Mettre à Jour le Profil"
             android:layout_marginTop="16dp"
             android:layout_gravity="center_horizontal"/>
-
-        <!-- Bouton pour afficher l'activité de gestion du profil -->
-        <Button
-            android:id="@+id/button_goto_profile_management"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gestion du Profil"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="center_horizontal"/>
-
-        <!-- Bouton de déconnexion -->
         <Button
             android:id="@+id/button_sign_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Déconnexion"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <!-- Bouton pour afficher l'activité de gestion du profil -->
+        <Button
+            android:id="@+id/btn_gotobdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gestion de la base de donnees"
             android:layout_marginTop="16dp"
             android:layout_gravity="center_horizontal"/>
     </LinearLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,10 +17,84 @@
         android:title="MagaGestionne"
         android:titleTextColor="#FFFFFF"/>
 
-    <!-- Zone centrale -->
-    <FrameLayout
-        android:id="@+id/container"
+    <!-- Bouton pour ajouter un personnage -->
+    <Spinner
+        android:id="@+id/spinner_personnages"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toolbar" />
+        android:layout_height="37dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/edit_text_nom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinner_personnages"
+        android:layout_marginTop="16dp"
+        android:hint="Nom du personnage"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edit_text_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text_nom"
+        android:layout_marginTop="16dp"
+        android:hint="Description"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edit_val_level"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text_description"
+        android:layout_marginTop="16dp"
+        android:hint="Niveau"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edit_val_hp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_val_level"
+        android:layout_marginTop="16dp"
+        android:hint="Points de Vie"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btn_modifier"
+        android:layout_width="164dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/edit_val_hp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="17dp"
+        android:text="Modifier" />
+
+    <Button
+        android:id="@+id/btn_Enregistrer"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_below="@id/btn_modifier"
+        android:layout_marginTop="0dp"
+        android:text="Enregistrer" />
+
+
+    <Button
+        android:id="@+id/btn_supprimer"
+        android:layout_width="164dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/edit_val_hp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="15dp"
+        android:layout_toRightOf="@id/btn_modifier"
+        android:text="Supprimer" />
+
+    <Button
+        android:id="@+id/btn_gotoAddPersonnage"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Ajouter un personnage"
+        android:layout_alignParentBottom="true" />
+
 </RelativeLayout>
