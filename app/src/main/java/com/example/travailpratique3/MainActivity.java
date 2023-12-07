@@ -43,12 +43,12 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     FirebaseDatabase bd;
     DatabaseReference ref;
-    private Button btn_gotoAddPerso;
     private FirebaseAuth mAuth;
-    private Button buttonModifier, buttonSupprimer, buttonEnregistrer;
+    private Button buttonModifier;
     private Map<String, Personnage> personnagesMap; // Hashmap de mes personnages
     private ListView lv_personnages;
     private boolean champsEditable = false;
+    int selectedPosition;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,14 +60,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Button btn_gotoAddPerso = findViewById(R.id.btn_gotoAddPersonnage);
 
-
         lv_personnages=findViewById(R.id.lv_Personnages);
 
         // Référencez les autres champs pour les détails du personnage
         buttonModifier = findViewById(R.id.btn_modifier);
-        buttonSupprimer = findViewById(R.id.btn_supprimer);
-        buttonEnregistrer = findViewById(R.id.btn_Enregistrer);
-        buttonEnregistrer.setEnabled(false);
 
 //        // Dans la méthode onCreateView après l'initialisation de la RecyclerView
 //        RecyclerView recyclerView = view.findViewById(R.id.recycler_view_personnages);
@@ -111,15 +107,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        buttonEnregistrer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Modifier le personnage sélectionné
-                modifySelectedPersonnage();
-                buttonModifier.performClick();
-            }
-        });
-        // Écouteur de sélection d'élément dans le Spinner
 //        spinnerPersonnages.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override
 //            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -139,40 +126,31 @@ public class MainActivity extends AppCompatActivity {
         buttonModifier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (champsEditable) {
-                    // Sauvegarder les modifications
-                    enregistrerModifications();
+                // Obtenir l'élément sélectionné dans le ListView
+                int position = selectedPosition;
 
-                    // Désactiver les champs EditText
-//                    editTextNom.setEnabled(false);
-//                    editTextDescription.setEnabled(false);
-//                    editSeekValLevel.setEnabled(false);
-//                    editSeekValHp.setEnabled(false);
+                Log.e("position","position: "+position);
 
-                    // Désactiver le bouton Enregistrer
-                    buttonEnregistrer.setEnabled(false);
-                    buttonModifier.setEnabled(true);
-                    champsEditable = false;
+                if (position != -1) {
+                    // Obtenir l'adaptateur associé au ListView
+                    PersonnageListAdapter adapter = (PersonnageListAdapter) lv_personnages.getAdapter();
+
+                    // Récupérer le personnage sélectionné à partir de l'adaptateur
+                    Personnage selectedPersonnage = adapter.getItem(position);
+
+                    if (selectedPersonnage != null) {
+                        // Créer une intention pour lancer l'activité de modification
+                        Intent intent = new Intent(MainActivity.this, ModifierPersonnage.class);
+
+                        // Ajouter le personnage sélectionné à l'intention en utilisant Parcelable
+                        intent.putExtra("selectedPersonnage", selectedPersonnage);
+
+                        // Démarrer l'activité de modification avec les détails du personnage sélectionné
+                        startActivity(intent);
+                    }
                 } else {
-                    // Activer les champs EditText pour la modification
-//                    editTextNom.setEnabled(true);
-//                    editTextDescription.setEnabled(true);
-//                    editSeekValLevel.setEnabled(true);
-//                    editSeekValHp.setEnabled(true);
-
-                    // Activer le bouton Enregistrer
-                    buttonEnregistrer.setEnabled(true);
-                    buttonModifier.setEnabled(false);
-                    champsEditable = true;
+                    Toast.makeText(MainActivity.this, "Sélectionnez un personnage à modifier", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-        buttonSupprimer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Supprimer le personnage sélectionné
-                deleteSelectedPersonnage();
             }
         });
 
@@ -186,73 +164,9 @@ public class MainActivity extends AppCompatActivity {
                 FragmentPersonnages fragmentPersonnages = new FragmentPersonnages();
                 fragmentPersonnages.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fm_details,fragmentPersonnages).commit();
-//                String nom = editTextNom.getText().toString();
-//                String description = editTextDescription.getText().toString();
-//                int niveau = editSeekValLevel.getProgress();
-//                int pointsDeVie = editSeekValHp.getProgress();
-
-                if (selectedPersonnage != null) {
-//                    editTextNom.setText(selectedPersonnage.getNom());
-//                    editTextDescription.setText(selectedPersonnage.getDescription());
-//                    editSeekValLevel.setProgress(selectedPersonnage.getNiveau());
-//                    editSeekValHp.setProgress(selectedPersonnage.getPointsDeVie());
-                }
+                selectedPosition = position;
             }
         });
-    }
-
-
-    private void enregistrerModifications() {
-//        // Récupérer les nouvelles valeurs des champs EditText
-//        String nom = editTextNom.getText().toString();
-//        String description = editTextDescription.getText().toString();
-//        int niveau = editSeekValLevel.getProgress();
-//        int pointsDeVie = editSeekValHp.getProgress();
-//
-//        // Mettre à jour l'objet Personnage sélectionné dans la structure de données ou la base de données
-//        // personnagesMap contient votre Personnage sélectionné
-//
-//        // Exemple pour la mise à jour dans personnagesMap :
-//        Personnage selectedPersonnage = personnagesMap.get(spinnerPersonnages.getSelectedItem().toString());
-//        if (selectedPersonnage != null) {
-//            selectedPersonnage.setNom(nom);
-//            selectedPersonnage.setDescription(description);
-//            selectedPersonnage.setNiveau(niveau);
-//            selectedPersonnage.setPointsDeVie(pointsDeVie);
-//            // Mettre à jour l'objet Personnage dans la structure de données
-//            personnagesMap.put(selectedPersonnage.getNom(), selectedPersonnage);
-//        }
-    }
-    // Initialise le Spinner avec les noms des personnages
-    private void initializeSpinner() {
-//        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Personnages");
-//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                personnagesMap = new HashMap<>();
-//                List<String> personnagesLv = new ArrayList<>();
-//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-//                    String id = snapshot.child("id").getValue(String.class);
-//                    String nom = snapshot.child("nom").getValue(String.class);
-//                    String description = snapshot.child("description").getValue(String.class);
-//                    int niveau = snapshot.child("niveau").getValue(Integer.class);
-//                    int pointsDeVie = snapshot.child("pointsDeVie").getValue(Integer.class);
-//
-//                    Personnage personnage = new Personnage(id, nom, description, niveau, pointsDeVie);
-//                    String spinnerItem = personnage.getNom();
-//                    personnagesLv.add(spinnerItem);
-//                    personnagesMap.put(spinnerItem, personnage);
-//                }
-//                ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, personnagesLv);
-//                spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                spinnerPersonnages.setAdapter(spinnerAdapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                // Gérer les erreurs de chargement des données depuis Firebase
-//            }
-//        });
     }
     private void initializeListView() {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Personnages");
@@ -325,7 +239,6 @@ public class MainActivity extends AppCompatActivity {
 
                 // Affichez un message Toast pour indiquer que les modifications ont été apportées
                 Toast.makeText(MainActivity.this, "Les modifications ont été enregistrées pour " + nomPersonnage, Toast.LENGTH_SHORT).show();
-                initializeSpinner();
             }
         }
 

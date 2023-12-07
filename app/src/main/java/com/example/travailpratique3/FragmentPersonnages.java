@@ -46,6 +46,13 @@ public class FragmentPersonnages extends Fragment {
         text_view_health_points= vue.findViewById(R.id.text_view_health_points);
         text_view_level= vue.findViewById(R.id.text_view_level);
 
+        editTextNom.setEnabled(false);
+        editTextDescription.setEnabled(false);
+        editSeekValHp.setEnabled(false);
+        editSeekValLevel.setEnabled(false);
+        text_view_health_points.setEnabled(false);
+        text_view_level.setEnabled(false);
+
         Bundle bundle = getArguments();
         if (bundle!=null){
             Personnage monPersonnage = bundle.getParcelable("selectedPersonnage");

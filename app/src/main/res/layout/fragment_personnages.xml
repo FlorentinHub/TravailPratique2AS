@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="5dp"
     tools:context=".FragmentPersonnages">
     <EditText
         android:id="@+id/edit_text_nom"
@@ -19,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/text_view_level"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="6dp"
         android:hint="Description"
         android:inputType="text" />
 
@@ -28,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/seek_bar_level"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="6dp"
         android:text="Niveau" />
 
     <SeekBar
@@ -36,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/text_view_health_points"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="6dp"
         android:max="100" />
 
     <TextView
@@ -44,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/seek_bar_health_points"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="6dp"
         android:text="Points de Vie" />
 
     <SeekBar
@@ -52,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/btn_Enregistrer"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="8dp"
         android:max="150"
         android:min="50" />
 </LinearLayout>

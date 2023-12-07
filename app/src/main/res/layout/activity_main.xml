@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Barre de navigation supérieure -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -13,72 +12,29 @@
         android:minHeight="?attr/actionBarSize"
         android:title="MagaGestionne"
         android:titleTextColor="#FFFFFF"/>
-    <!-- Bouton pour ajouter un personnage -->
-
-    <!--    <EditText-->
-<!--        android:id="@+id/edit_val_level"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/edit_text_description"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:hint="Niveau"-->
-<!--        android:inputType="number" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/edit_val_hp"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/edit_val_level"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:hint="Points de Vie"-->
-<!--        android:inputType="number" />-->
 
     <ListView
         android:id="@+id/lv_Personnages"
         android:layout_width="match_parent"
-        android:layout_height="289dp"
-        android:layout_below="@id/toolbar">
-    </ListView>
-
+        android:layout_height="230dp"
+        android:layout_below="@id/toolbar"></ListView>
     <FrameLayout
         android:id="@+id/fm_details"
         android:layout_width="match_parent"
         android:layout_height="248dp"
-        android:layout_below="@+id/lv_Personnages"></FrameLayout>
-    <Button
-        android:id="@+id/btn_Enregistrer"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_above="@id/btn_gotoAddPersonnage"
-        android:text="Enregistrer" />
-
-    <Button
-        android:id="@+id/btn_supprimer"
-        android:layout_width="164dp"
-        android:layout_height="70dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginRight="15dp"
-        android:layout_toRightOf="@id/btn_modifier"
-        android:text="Supprimer"
-        android:visibility="invisible"/>
-
-
+        android:layout_below="@+id/lv_Personnages">
+    </FrameLayout>
 
     <Button
         android:id="@+id/btn_modifier"
-        android:layout_width="164dp"
-        android:layout_height="70dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="171dp"
-        android:text="Modifier"
-        android:visibility="invisible"/>
-
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_above="@id/btn_gotoAddPersonnage"
+        android:text="Modifier" />
     <Button
         android:id="@+id/btn_gotoAddPersonnage"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Ajouter un personnage"
         android:layout_alignParentBottom="true"/>
-
 </RelativeLayout>
