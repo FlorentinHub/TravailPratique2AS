@@ -3,17 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Barre de navigation supérieure -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@color/orange"
         android:minHeight="?attr/actionBarSize"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:gravity="center_vertical"
-        android:title="MagaGestionne"
+        android:title="@string/app_name"
         android:titleTextColor="#FFFFFF"/>
 
     <EditText
@@ -22,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
         android:layout_marginTop="26dp"
-        android:hint="Nom du personnage"
+        android:hint="@string/nom_personnage_hint"
         android:inputType="text" />
 
     <EditText
@@ -31,13 +30,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/edit_text_nom"
         android:layout_marginTop="16dp"
-        android:hint="Description"
+        android:hint="@string/description_hint"
         android:inputType="text" />
+
     <TextView
         android:id="@+id/text_view_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Niveau"
+        android:text="@string/niveau_label"
         android:layout_below="@id/edit_text_description"
         android:layout_marginTop="16dp"/>
 
@@ -53,9 +53,10 @@
         android:id="@+id/text_view_health_points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Points de Vie"
+        android:text="@string/points_vie_label"
         android:layout_below="@id/seek_bar_level"
         android:layout_marginTop="16dp"/>
+
     <SeekBar
         android:id="@+id/seek_bar_health_points"
         android:layout_width="match_parent"
@@ -67,25 +68,27 @@
 
     <Button
         android:id="@+id/btn_Enregistrer"
+        android:backgroundTint="#FF5722"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_above="@id/btn_supprimer"
         android:layout_marginTop="0dp"
-        android:text="Enregistrer" />
-
+        android:text="@string/enregistrer_label" />
 
     <Button
         android:id="@+id/btn_supprimer"
+        android:backgroundTint="#FF5722"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_above="@id/btn_gotoAddPersonnage"
-        android:text="Supprimer" />
+        android:text="@string/supprimer_label" />
 
     <Button
         android:id="@+id/btn_gotoAddPersonnage"
+        android:backgroundTint="#FF5722"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="Ajouter un personnage"
+        android:text="@string/ajouter_personnage_label"
         android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

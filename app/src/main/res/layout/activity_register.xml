@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#000000"
     tools:context=".MainActivity">
 
     <TextView
@@ -24,8 +24,8 @@
         android:id="@+id/til_courriel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="26dp"
         android:layout_marginEnd="24dp"
         android:hint="@string/hint_enter_email"
         app:layout_constraintTop_toBottomOf="@+id/tv_Titre"
@@ -43,8 +43,8 @@
         android:id="@+id/til_mdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="26dp"
         android:layout_marginEnd="24dp"
         android:hint="@string/hint_enter_password"
         app:layout_constraintTop_toBottomOf="@+id/til_courriel"
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:maxLines="1"/>
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -63,8 +63,8 @@
         android:id="@+id/til_mdpconfirmation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="26dp"
         android:layout_marginEnd="24dp"
         android:hint="@string/hint_enter_password"
         app:layout_constraintTop_toBottomOf="@+id/til_mdp"
@@ -80,12 +80,12 @@
 
     <Button
         android:id="@+id/btn_inscription"
-        style="@style/ButtonStyle"
-        android:text="@string/register_button"
         android:layout_width="159dp"
         android:layout_height="64dp"
+        android:backgroundTint="#FF5722"
+        android:text="@string/register_button"
         app:layout_constraintEnd_toStartOf="@+id/btn_connexion"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.764"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_mdpconfirmation"
         tools:ignore="MissingConstraints" />
@@ -94,9 +94,11 @@
         android:id="@+id/btn_connexion"
         android:layout_width="159dp"
         android:layout_height="64dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="#FF5722"
         android:text="@string/login_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
+        app:layout_constraintHorizontal_bias="0.936"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_mdpconfirmation"
         tools:ignore="MissingConstraints" />

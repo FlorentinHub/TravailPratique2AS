@@ -65,32 +65,3 @@ public class FragmentPersonnages extends Fragment {
     }
 
 }
-//
-// editSeekValHp.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//@Override
-//public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//        text_view_health_points.setText("Points de Vie: " + progress);
-//        }
-//
-//@Override
-//public void onStartTrackingTouch(SeekBar seekBar) {
-//        }
-//
-//@Override
-//public void onStopTrackingTouch(SeekBar seekBar) {
-//        }
-//        });
-//        editSeekValLevel.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//@Override
-//public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//        text_view_level.setText("Niveau: " + progress);
-//        }
-//
-//@Override
-//public void onStartTrackingTouch(SeekBar seekBar) {
-//        }
-//
-//@Override
-//public void onStopTrackingTouch(SeekBar seekBar) {
-//        }
-//        });

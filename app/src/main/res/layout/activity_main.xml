@@ -8,33 +8,36 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@color/orange"
         android:minHeight="?attr/actionBarSize"
-        android:title="MagaGestionne"
+        android:title="@string/app_name"
         android:titleTextColor="#FFFFFF"/>
 
     <ListView
         android:id="@+id/lv_Personnages"
         android:layout_width="match_parent"
         android:layout_height="230dp"
-        android:layout_below="@id/toolbar"></ListView>
+        android:layout_below="@id/toolbar" />
+
     <FrameLayout
         android:id="@+id/fm_details"
         android:layout_width="match_parent"
         android:layout_height="248dp"
-        android:layout_below="@+id/lv_Personnages">
-    </FrameLayout>
+        android:layout_below="@+id/lv_Personnages" />
 
     <Button
         android:id="@+id/btn_modifier"
+        android:backgroundTint="#FF5722"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_above="@id/btn_gotoAddPersonnage"
-        android:text="Modifier" />
+        android:text="@string/modify" />
+
     <Button
         android:id="@+id/btn_gotoAddPersonnage"
+        android:backgroundTint="#FF5722"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="Ajouter un personnage"
-        android:layout_alignParentBottom="true"/>
+        android:text="@string/add_character"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

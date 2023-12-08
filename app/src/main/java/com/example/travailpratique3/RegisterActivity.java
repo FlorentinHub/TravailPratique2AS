@@ -21,7 +21,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-
 public class RegisterActivity extends AppCompatActivity {
 
     TextInputEditText tiet_courriel, tiet_mdp, tiet_mdpConfirmation;
@@ -39,7 +38,6 @@ public class RegisterActivity extends AppCompatActivity {
         tiet_mdpConfirmation = findViewById(R.id.tiet_mdpconfirmation);
         btn_inscription = findViewById(R.id.btn_inscription);
         btn_connexion = findViewById(R.id.btn_connexion);
-
 
         // Initialiser FirebaseAuth
         bdAuth = FirebaseAuth.getInstance();
@@ -68,57 +66,60 @@ public class RegisterActivity extends AppCompatActivity {
                 String confirmPassword = tiet_mdpConfirmation.getText().toString().trim();
 
                 if (email.isEmpty()) {
-                    tiet_courriel.setError("Entrez votre courriel");
+                    tiet_courriel.setError(getString(R.string.register_email_hint));
                     tiet_courriel.requestFocus();
                     return;
                 }
 
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    tiet_courriel.setError("Format de courriel invalide");
+                    tiet_courriel.setError(getString(R.string.invalid_email_format));
                     tiet_courriel.requestFocus();
                     return;
                 }
 
                 if (password.isEmpty()) {
-                    tiet_mdp.setError("Entrez votre mot de passe");
+                    tiet_mdp.setError(getString(R.string.register_password_hint));
                     tiet_mdp.requestFocus();
                     return;
                 }
 
                 if (password.length() < 6) {
-                    tiet_mdp.setError("Le mot de passe doit contenir au moins 6 caractères");
+                    tiet_mdp.setError(getString(R.string.password_length_error));
                     tiet_mdp.requestFocus();
                     return;
                 }
 
                 if (!password.equals(confirmPassword)) {
-                    tiet_mdpConfirmation.setError("Les mots de passe ne correspondent pas");
+                    tiet_mdpConfirmation.setError(getString(R.string.password_mismatch_error));
                     tiet_mdpConfirmation.requestFocus();
                     return;
                 }
 
-                signInUser(email, password);
+                // Création d'un objet Utilisateur
+                Utilisateur utilisateur = new Utilisateur("NomUtilisateur", email, password);
+
+                // Enregistrement de l'utilisateur avec Firebase
+                signInUser(utilisateur.getEmail(), utilisateur.getPassword());
             }
         });
     }
 
     // Méthode pour authentifier l'utilisateur existant avec Firebase
     private void signInUser(String email, String password) {
-//        bdAuth.signInWithEmailAndPassword(email, password);
         bdAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // L'inscription est réussie
-                            Toast.makeText(RegisterActivity.this, "Utilisateur créé", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, getString(R.string.user_created), Toast.LENGTH_SHORT).show();
                             FirebaseUser user = bdAuth.getCurrentUser();
                             if (user != null) {
                                 startActivity(new Intent(RegisterActivity.this, GestionProfilActivity.class));
                                 finish();
                             }
                         } else {
-                            Toast.makeText(RegisterActivity.this, "Erreur : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, getString(R.string.error_prefix) + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

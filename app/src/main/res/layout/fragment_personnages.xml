@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,11 +5,12 @@
     android:orientation="vertical"
     android:layout_margin="5dp"
     tools:context=".FragmentPersonnages">
+
     <EditText
         android:id="@+id/edit_text_nom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nom du personnage"
+        android:hint="@string/nom_personnage_hint"
         android:inputType="text"
         android:layout_above="@id/edit_text_description"
         android:layout_marginBottom="0dp"/>
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/text_view_level"
         android:layout_marginBottom="6dp"
-        android:hint="Description"
+        android:hint="@string/description_hint"
         android:inputType="text" />
 
     <TextView
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/seek_bar_level"
         android:layout_marginBottom="6dp"
-        android:text="Niveau" />
+        android:text="@string/niveau_label" />
 
     <SeekBar
         android:id="@+id/seek_bar_level"
@@ -38,7 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/text_view_health_points"
         android:layout_marginBottom="6dp"
-        android:max="100" />
+        android:max="100"
+        android:progressTint="@color/orange"/>
 
     <TextView
         android:id="@+id/text_view_health_points"
@@ -46,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/seek_bar_health_points"
         android:layout_marginBottom="6dp"
-        android:text="Points de Vie" />
+        android:text="@string/points_vie_label" />
 
     <SeekBar
         android:id="@+id/seek_bar_health_points"
@@ -55,5 +56,6 @@
         android:layout_above="@id/btn_Enregistrer"
         android:layout_marginBottom="8dp"
         android:max="150"
-        android:min="50" />
+        android:min="50"
+        android:progressTint="@color/orange" />
 </LinearLayout>

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Titre de l'activité -->
     <TextView
         android:id="@+id/text_view_add_perso_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ajouter un Personnage"
+        android:text="@string/addPerso"
         android:textSize="24sp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="24dp"/>
 
-    <!-- Champs pour saisir les détails du personnage -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edit_text_full_name"
         android:layout_width="match_parent"
@@ -26,7 +25,7 @@
             android:id="@+id/edit_text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nom du personnage" />
+            android:hint="@string/nomPerso" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -40,15 +39,14 @@
             android:id="@+id/edit_text_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Description" />
+            android:hint="@string/desc" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Champs pour le niveau et les points de vie -->
     <TextView
         android:id="@+id/text_view_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Niveau"
+        android:text="@string/level"
         android:layout_below="@id/text_input_layout_description"
         android:layout_marginTop="16dp"/>
 
@@ -58,13 +56,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_view_level"
         android:layout_marginTop="8dp"
-        android:max="100" />
+        android:max="100"
+        android:progressTint="#FF5722" />
 
     <TextView
         android:id="@+id/text_view_health_points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Points de Vie"
+        android:text="@string/health_points"
         android:layout_below="@id/seek_bar_level"
         android:layout_marginTop="16dp"/>
 
@@ -74,15 +73,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_view_health_points"
         android:layout_marginTop="8dp"
+        android:progressTint="#FF5722"
         android:max="150"
-        android:min="50" />
+        android:min="50"/>
 
-    <!-- Bouton pour ajouter le personnage -->
     <Button
         android:id="@+id/button_add_perso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ajouter le Personnage"
+        android:backgroundTint="#FF5722"
+        android:text="@string/addPerso"
         android:layout_below="@id/text_view_health_points"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"/>

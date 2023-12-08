@@ -109,7 +109,7 @@ public class ModifierPersonnage extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             // Notifier via un Toast que les modifications ont été enregistrées
-                            Toast.makeText(ModifierPersonnage.this, "Modifications enregistrées", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ModifierPersonnage.this, R.string.modifications_saved, Toast.LENGTH_SHORT).show();
                             //Renvoyer sur le main
                             Intent intent = new Intent(ModifierPersonnage.this, MainActivity.class);
                             startActivity(intent);
@@ -120,7 +120,7 @@ public class ModifierPersonnage extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Log.e("ModifierPerso", "Erreur lors de l'enregistrement des modifications : " + e.getMessage());
-                            Toast.makeText(ModifierPersonnage.this, "Erreur lors de l'enregistrement des modifications", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ModifierPersonnage.this, R.string.error_modifications, Toast.LENGTH_SHORT).show();
                         }
                     });
         }
@@ -135,7 +135,7 @@ public class ModifierPersonnage extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             // Notification Toast success
-                            Toast.makeText(ModifierPersonnage.this, "Personnage supprimé", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ModifierPersonnage.this, R.string.character_deleted, Toast.LENGTH_SHORT).show();
 
                             // Retour au MainActivity
                             Intent intent = new Intent(ModifierPersonnage.this, MainActivity.class);
@@ -147,7 +147,7 @@ public class ModifierPersonnage extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Log.e("ModifierPerso", "Erreur : " + e.getMessage());
-                            Toast.makeText(ModifierPersonnage.this, "Erreur lors de la suppression du personnage", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ModifierPersonnage.this, R.string.error_deleting_character, Toast.LENGTH_SHORT).show();
                         }
                     });
         }

@@ -62,7 +62,7 @@ public class AddPersoActivitiy extends AppCompatActivity {
         seekBarHealthPoints.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                textViewHealthPoints.setText("Points de Vie: " + progress);
+                textViewHealthPoints.setText(getString(R.string.pdv) + progress);
             }
 
             @Override
@@ -100,7 +100,7 @@ public class AddPersoActivitiy extends AppCompatActivity {
             if(!description.isEmpty()) {
                     String id = databaseReference.push().getKey();
                     Personnage personnage = new Personnage(id, nom, description, level, healthPoints);
-                    Toast.makeText(AddPersoActivitiy.this, "Nouveau Personnage " + personnage.getNom(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddPersoActivitiy.this, getString(R.string.nouveauPersonnage) + personnage.getNom(), Toast.LENGTH_SHORT).show();
                     databaseReference.child(id).setValue(personnage);
 
                     // Efface les champs après l'ajout
@@ -113,11 +113,11 @@ public class AddPersoActivitiy extends AppCompatActivity {
                     Handler handler = new Handler();
                     handler.postDelayed(() -> retour(), 4);   //5 seconds
             }else{
-                tiet_description.setError("Veuillez saisir une description");
+                tiet_description.setError(getString(R.string.saisirDesc));
                 tiet_description.requestFocus();
             }
         }else {
-            tiet_nom.setError("Veuillez saisir un nom");
+            tiet_nom.setError(getString(R.string.saisirNom));
             tiet_nom.requestFocus();
         }
     }

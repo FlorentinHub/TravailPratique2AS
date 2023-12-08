@@ -53,12 +53,12 @@ public class GestionProfilActivity extends AppCompatActivity {
             tiet_email.setText(currentUser.getEmail());
         }
 
-
         // Bouton pour mettre à jour le profil
         btn_updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String newFullName = tiet_fullName.getText().toString().trim();
+                String newCourriel = tiet_email.getText().toString().trim();
 
                 // Récupérer l'utilisateur actuellement connecté
                 FirebaseUser currentUser = bdAuth.getCurrentUser();
@@ -74,10 +74,23 @@ public class GestionProfilActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         // Mise à jour du nom complet réussie
-                                        Toast.makeText(GestionProfilActivity.this, "Nom complet mis à jour", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(GestionProfilActivity.this, getString(R.string.NomMAJ), Toast.LENGTH_SHORT).show();
                                     } else {
                                         // Échec de la mise à jour du nom complet
-                                        Toast.makeText(GestionProfilActivity.this, "Erreur lors de la mise à jour du nom complet", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(GestionProfilActivity.this, getString(R.string.errMAJNom), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                    currentUser.updateEmail(newCourriel)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        // Mise à jour du courriel réussie
+                                        Toast.makeText(GestionProfilActivity.this, getString(R.string.mailMAJ), Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        // Échec de la mise à jour du courriel
+                                        Toast.makeText(GestionProfilActivity.this, getString(R.string.errMAJMail), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });

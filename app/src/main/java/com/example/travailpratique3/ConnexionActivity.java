@@ -54,7 +54,7 @@ public class ConnexionActivity extends AppCompatActivity {
                                 finish();
                             } else {
                                 // Échec de la connexion, afficher un message d'erreur
-                                Toast.makeText(ConnexionActivity.this, "Login failed.",
+                                Toast.makeText(ConnexionActivity.this, "Login failed",
                                         Toast.LENGTH_SHORT).show();
                             }
                         });

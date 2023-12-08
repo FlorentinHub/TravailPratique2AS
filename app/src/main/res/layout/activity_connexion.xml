@@ -61,7 +61,7 @@
         android:layout_width="159dp"
         android:layout_height="64dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="#5C5C5C"
+        android:backgroundTint="#FF5722"
         android:text="@string/register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.137"
@@ -70,6 +70,7 @@
 
     <Button
         android:id="@+id/btn_connexion"
+        android:backgroundTint="#FF5722"
         android:layout_width="159dp"
         android:layout_height="64dp"
         android:layout_marginTop="8dp"
